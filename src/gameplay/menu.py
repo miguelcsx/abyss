@@ -2,6 +2,8 @@
 
 import pygame
 
+from src.gameplay.scoreboard import Scoreboard
+
 class MainMenu:
     def __init__(self, width, height):
         self.width = width
@@ -66,6 +68,9 @@ class MainMenu:
             action = self.handle_events()
             if action == "play":
                 return "play"
+            elif action == "scoreboard":
+                scoreboard = Scoreboard(self.width, self.height)
+                scoreboard.run()  # Display scoreboard
             elif action == "quit":
                 pygame.quit()
                 quit()

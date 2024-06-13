@@ -98,6 +98,9 @@ class Game:
         self.player_health = self.player.life
         self.enemies_killed = self.player.enemies_killed
 
+        if self.player.life <= 0:
+            self.running = False
+
 
     def create_projectile(self):
         projectile = self.player.shoot(self.collisions)
