@@ -81,8 +81,8 @@ class Player(pygame.sprite.Sprite):
         self.life -= damage
         if self.life <= 0:
             print("Game Over")
-            pygame.quit()
-            sys.exit()
+            # pygame.quit()
+            # sys.exit()
 
     def update_kills(self):
         self.enemies_killed += 1

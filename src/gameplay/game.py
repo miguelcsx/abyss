@@ -11,7 +11,6 @@ from src.model.collision import Collision
 
 class Game:
     def __init__(self, width, height, fps):
-        pygame.init()
         self.width = width
         self.height = height
         self.fps = fps
@@ -196,4 +195,3 @@ class Game:
             self.cap_frame_rate()
 
         pygame.quit()
-        sys.exit()
