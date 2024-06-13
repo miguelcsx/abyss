@@ -4,6 +4,7 @@ import sys
 import math
 import random
 import pygame
+from src.gameplay.name_input import NameInput
 from src.model.gun import Gun
 from src.model.player import Player
 from src.model.enemy import Enemy
@@ -183,10 +184,19 @@ class Game:
         self.screen.blit(health_text, health_rect)
         self.screen.blit(enemies_text, enemies_rect)
 
-
-
-
     def run(self):
+        pygame.init()
+        screen = pygame.display.set_mode((self.width, self.height))
+        pygame.display.set_caption("Abyss")
+
+        name_input = NameInput(self.width, self.height)
+
+        while not name_input.is_done():
+            name_input.handle_events()
+            name_input.render(screen)
+
+        player_name = name_input.get_input()
+
         while self.running:
             self.handle_events()
             self.update_game()
@@ -194,4 +204,5 @@ class Game:
             self.update_display()
             self.cap_frame_rate()
 
-        pygame.quit()
+        # Game ended, return player's stats
+        return (player_name, self.player_time, self.enemies_killed)
